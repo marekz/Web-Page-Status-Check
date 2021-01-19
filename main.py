@@ -4,8 +4,9 @@ import configparser
 
 
 config = configparser.ConfigParser()
+config.read("/home/userdir/scripts/WebPageStatusCheck/config.ini")
 site_list = config.get("URL", "SITE_LIST")
-
+site_list = site_list.split(',')
 
 if __name__ == '__main__':
     for url in site_list:
