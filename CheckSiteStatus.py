@@ -1,5 +1,6 @@
 import urllib.request
 from urllib.error import HTTPError
+from urllib.error import URLError
 
 
 class CheckSiteStatus:
@@ -14,3 +15,5 @@ class CheckSiteStatus:
             return status
         except HTTPError as e:
             return e
+        except URLError as ue:
+            return ue
