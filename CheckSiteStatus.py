@@ -1,4 +1,5 @@
 import urllib.request
+from urllib.error import HTTPError
 
 
 class CheckSiteStatus:
@@ -8,5 +9,8 @@ class CheckSiteStatus:
     @staticmethod
     def check_site_url(url: str):
         url = 'http://' + url
-        status = urllib.request.urlopen(url).getcode()
-        return status
+        try:
+            status = urllib.request.urlopen(url).getcode()
+            return status
+        except HTTPError as e:
+            return e
